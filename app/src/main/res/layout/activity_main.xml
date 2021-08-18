@@ -69,6 +69,11 @@
         android:checked="true"
         android:text="이용 약관에 동의합니다" />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/btn_logo_neppplus" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

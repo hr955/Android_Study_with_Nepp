@@ -11,7 +11,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnMoveToOther.setOnClickListener {
-            val intent = Intent(this, OtherActivity::class.java)
+            startActivity(Intent(this, OtherActivity::class.java))
+        }
+
+        btnSendMessage.setOnClickListener {
+            val intent = Intent(this, ViewMessageActivity::class.java)
+            intent.putExtra("message", edtMessage.text.toString())
             startActivity(intent)
         }
     }

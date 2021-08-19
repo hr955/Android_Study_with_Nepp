@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         btnEditNickname.setOnClickListener {
             val intent = Intent(this, EditNicknameActivity::class.java)
-            startActivityForResult(intent, REQ_FOR_NICKNAME, )
+            startActivityForResult(intent, REQ_FOR_NICKNAME)
 
         }
     }

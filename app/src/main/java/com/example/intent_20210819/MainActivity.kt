@@ -1,5 +1,6 @@
 package com.example.intent_20210819
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val REQ_FOR_NICKNAME = 1000
-    val REQ_FOR_PHONE = 1001
+    private val REQ_FOR_NICKNAME = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,16 @@ class MainActivity : AppCompatActivity() {
         btnEditNickname.setOnClickListener {
             val intent = Intent(this, EditNicknameActivity::class.java)
             startActivityForResult(intent, REQ_FOR_NICKNAME)
+        }
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == REQ_FOR_NICKNAME){
+            if(resultCode == Activity.RESULT_OK){
+                tvNickname.text = data?.getStringExtra("nick")
+            }
         }
     }
 }

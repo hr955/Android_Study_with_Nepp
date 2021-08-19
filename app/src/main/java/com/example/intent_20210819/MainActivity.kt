@@ -11,7 +11,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnMoveToOther.setOnClickListener {
-            startActivity(Intent(this, OtherActivity::class.java))
+            val intent = Intent(this, OtherActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
     <Button
@@ -13,5 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="다른 화면으로 이동" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="다음 화면에 전달할 내용 입력" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="입력한 내용 전달하기" />
 
 </LinearLayout>

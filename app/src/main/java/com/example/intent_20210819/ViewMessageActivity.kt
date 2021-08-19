@@ -1,6 +1,5 @@
 package com.example.intent_20210819
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_view_message.*

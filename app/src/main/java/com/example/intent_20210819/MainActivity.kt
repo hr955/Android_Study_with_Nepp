@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnDial.setOnClickListener {
-            val myUri = Uri.parse("tel:01012345678")
+            val myUri = Uri.parse("tel:${edtPhoneNum.text.toString()}")
             startActivity(Intent(Intent.ACTION_DIAL, myUri))
         }
     }

@@ -14,14 +14,29 @@
         android:text="메세지 입력" />
 
     <EditText
+        android:id="@+id/edtMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="아무 말이나 입력하세요"
         android:singleLine="true" />
 
     <Button
+        android:id="@+id/btnToast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="입력한 메세지를 토스트로" />
+
+    <Button
+        android:id="@+id/btnMoveToTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="입력한 메세지를 텍스트뷰에 옮겨적기" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="입력한 메세지가 들어옵니다" />
 
 </LinearLayout>

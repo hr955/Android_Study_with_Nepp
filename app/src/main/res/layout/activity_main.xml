@@ -8,9 +8,9 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btn_main"
+        android:id="@+id/logBtn01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="button"/>
+        android:text="button" />
 
 </LinearLayout>

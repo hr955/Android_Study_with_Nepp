@@ -10,9 +10,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         btnToast.setOnClickListener {
             val inputMessage = edtMessage.text.toString()
             Toast.makeText(this, inputMessage, Toast.LENGTH_SHORT).show()
+        }
+
+        btnMoveToTextView.setOnClickListener {
+            val inputMessage = edtMessage.text.toString()
+            tvResult.text = inputMessage
         }
     }
 }

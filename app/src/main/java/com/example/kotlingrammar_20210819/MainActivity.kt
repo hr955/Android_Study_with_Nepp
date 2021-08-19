@@ -38,5 +38,23 @@ class MainActivity : AppCompatActivity() {
         } else {
             Log.d("나이확인", "미취학아동입니다.")
         }
+
+        //장기근속의 4대요건 1. 높은급여 2. 가까운거리 3. 워라벨
+
+        val companyASalary = 5000
+        val companyADistance = 12.5
+        val companyABalance = true
+
+        if (companyASalary >= 4000) {
+
+        }
+
+        if (companyADistance < 10 && companyASalary >= 3000) {
+
+        }
+
+        if (companyABalance || companyASalary >= 5000) {
+
+        }
     }
 }

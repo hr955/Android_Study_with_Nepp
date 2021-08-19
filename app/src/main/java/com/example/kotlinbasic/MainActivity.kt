@@ -11,9 +11,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        logBtn02.setOnClickListener {
+            Log.d("메인화면", "두번째 로그 버튼 눌림")
+        }
+
         logBtn01.setOnClickListener {
-            Log.d("test","hello")
-            Log.e("test", "e_hello")
+            Log.d("메인화면","첫번째 로그 버튼 눌림")
+            Log.e("메인화면", "e 로그")
+            Log.i("메인화면", "i 로그")
         }
     }
 }

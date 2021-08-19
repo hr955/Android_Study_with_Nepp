@@ -11,6 +11,12 @@
         android:id="@+id/logBtn01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="button" />
+        android:text="로그 확인용 버튼 01" />
+
+    <Button
+        android:id="@+id/logBtn02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="로그 확인용 버튼 02" />
 
 </LinearLayout>

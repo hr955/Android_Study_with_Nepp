@@ -32,12 +32,12 @@ class FriendsAdapter(
         val data = mList[position]
         var txtName = row.findViewById<TextView>(R.id.txt_name)
         var txtMessage = row.findViewById<TextView>(R.id.txt_message)
-        var btnCall = row.findViewById<Button>(R.id.btn_call)
+        var btnDial = row.findViewById<Button>(R.id.btn_dial)
 
         txtName.text = data.name
         txtMessage.text = data.message
 
-        btnCall.setOnClickListener {
+        btnDial.setOnClickListener {
             val uri = Uri.parse("tel:${data.phoneNum}")
             context.startActivity(Intent(Intent.ACTION_DIAL, uri))
         }

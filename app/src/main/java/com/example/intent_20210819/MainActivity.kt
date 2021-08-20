@@ -31,13 +31,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnDial.setOnClickListener {
-            val myUri = Uri.parse("tel:${edtPhoneNum.text.toString()}")
+            val myUri = Uri.parse("tel:${edtPhoneNum.text}")
             startActivity(Intent(Intent.ACTION_DIAL, myUri))
         }
 
         btnCall.setOnClickListener {
-            val myUri = Uri.parse("tel:${edtPhoneNum.text.toString()}")
+            val myUri = Uri.parse("tel:${edtPhoneNum.text}")
             startActivity(Intent(Intent.ACTION_CALL, myUri))
+        }
+
+        btnSendTo.setOnClickListener {
+            val myUri = Uri.parse("smsto:${edtPhoneNum.text}")
+            val intent = Intent(Intent.ACTION_SENDTO, myUri)
+
+            intent.putExtra("sms_body","자동으로 입력할 내용")
+            startActivity(intent)
+
         }
     }
 

@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             val student = mStudentList[position]
             Toast.makeText(this, "${student.name} 길게 눌림", Toast.LENGTH_SHORT).show()
 
+            //LongClick 전용 이벤트가 맞음
             return@setOnItemLongClickListener true
         }
     }

@@ -14,13 +14,14 @@ class StudentAdapter(
     private val mList: ArrayList<StudentData>
 ) : ArrayAdapter<StudentData>(mContext, resId, mList) {
 
-    // inflate : xml 을 변수에 담을 수 있도록 해줌
+    // inflater : xml을 코틀린에서 다룰 수 있도록 도와주는 도구
     val mInflater = LayoutInflater.from(mContext)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
 
-        if(tempRow == null){
+        //convertView 내부가 비어있다면, 새로운 xml 을 가져와서 채워줌
+        if (tempRow == null) {
             tempRow = mInflater.inflate(R.layout.item_student_list, null)
         }
 

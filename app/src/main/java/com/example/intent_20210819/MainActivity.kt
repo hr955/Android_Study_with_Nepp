@@ -34,6 +34,11 @@ class MainActivity : AppCompatActivity() {
             val myUri = Uri.parse("tel:${edtPhoneNum.text.toString()}")
             startActivity(Intent(Intent.ACTION_DIAL, myUri))
         }
+
+        btnCall.setOnClickListener {
+            val myUri = Uri.parse("tel:${edtPhoneNum.text.toString()}")
+            startActivity(Intent(Intent.ACTION_CALL, myUri))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -1,10 +1,13 @@
 package com.example.listviewpractice.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.TextView
 import com.example.listviewpractice.R
 import com.example.listviewpractice.datas.FriendData
@@ -29,9 +32,15 @@ class FriendsAdapter(
         val data = mList[position]
         var txtName = row.findViewById<TextView>(R.id.txt_name)
         var txtMessage = row.findViewById<TextView>(R.id.txt_message)
+        var btnCall = row.findViewById<Button>(R.id.btn_call)
 
         txtName.text = data.name
         txtMessage.text = data.message
+
+        btnCall.setOnClickListener {
+            val uri = Uri.parse("tel:${data.phoneNum}")
+            context.startActivity(Intent(Intent.ACTION_DIAL, uri))
+        }
 
         return row
     }

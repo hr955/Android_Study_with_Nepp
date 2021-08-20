@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var friendList = arrayListOf<FriendData>(
-            FriendData("준면", "안녕하세요", "01012345678"),
+            FriendData("준면", "안녕하세요", "01019910522"),
             FriendData("인준", "저는 인준이에요", "01020000323"),
             FriendData("재민", "집에 가고싶어", "010020000813"),
             FriendData("해찬", "해쨔니 와떠요", "01020000606"),

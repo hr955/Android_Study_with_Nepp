@@ -19,6 +19,7 @@ class StudentAdapter(
     val mInflater = LayoutInflater.from(mContext)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        //convertView 재사용에 사용할 View 를 담는 변수
         var tempRow = convertView
 
         //convertView 내부가 비어있다면, 새로운 xml 을 가져와서 채워줌

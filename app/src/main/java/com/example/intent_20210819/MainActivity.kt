@@ -46,7 +46,11 @@ class MainActivity : AppCompatActivity() {
 
             intent.putExtra("sms_body","자동으로 입력할 내용")
             startActivity(intent)
+        }
 
+        btnNaver.setOnClickListener {
+            val myUri = Uri.parse("https://www.naver.com")
+            startActivity(Intent(Intent.ACTION_VIEW, myUri))
         }
     }
 

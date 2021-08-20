@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.example.listview_20210820.R
 import com.example.listview_20210820.datas.StudentData
 
@@ -25,6 +26,19 @@ class StudentAdapter(
             tempRow = mInflater.inflate(R.layout.item_student_list, null)
         }
 
-        return tempRow!!
+        val row = tempRow!!
+
+        //row 가 결과로 (화면에) 나가기 전에 -> 추가적인 가공을 거치고 나가게 함
+        val data = mList[position]
+
+        var txtName = row.findViewById<TextView>(R.id.txt_name)
+        var txtBirthYear = row.findViewById<TextView>(R.id.txt_birth_year)
+        var txtAddress = row.findViewById<TextView>(R.id.txt_address)
+
+        txtName.text = data.name
+        txtBirthYear.text = "(${2021 - data.birthYear + 1} 세)"
+        txtAddress.text = data.address
+
+        return row
     }
 }

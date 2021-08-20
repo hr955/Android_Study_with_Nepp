@@ -12,14 +12,14 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/tv_name"
+            android:id="@+id/txt_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="학생 이름"
             android:textSize="17dp" />
 
         <TextView
-            android:id="@+id/tv_birth_year"
+            android:id="@+id/txt_birth_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -31,7 +31,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/txt_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="서울시 동대문구" />

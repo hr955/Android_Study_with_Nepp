@@ -1,8 +1,10 @@
 package com.example.listview_20210820
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.listview_20210820.adapters.StudentAdapter
 import com.example.listview_20210820.datas.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,12 +40,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         studentListView.setOnItemLongClickListener { parent, view, position, id ->
-            val student = mStudentList[position]
-            //Toast.makeText(this, "${student.name} 길게 눌림", Toast.LENGTH_SHORT).show()
-            mStudentList.remove(student)
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("학생 명단 삭제")
+            alert.setMessage("정말 해당 학생을 삭제하시겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+                val student = mStudentList[position]
+                mStudentList.remove(student)
+                //mStudentList.remove(position)
 
-            //리스트뷰 변경시 어댑터에게 알림
-            mAdapter.notifyDataSetChanged()
+                //Toast.makeText(this, "${student.name} 길게 눌림", Toast.LENGTH_SHORT).show()
+
+                //리스트뷰 변경시 어댑터에게 알림
+                mAdapter.notifyDataSetChanged()
+            })
+            alert.setNegativeButton("취소", null)
+            alert.show()
 
             //LongClick 전용 이벤트가 맞음
             return@setOnItemLongClickListener true

@@ -32,7 +32,7 @@
                 class="com.example.fragment_20210824.fragments.FirstFragment"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:tag="FirstFrag" />
+                android:tag="FirstFrag2" />
 
         </LinearLayout>
     </ScrollView>

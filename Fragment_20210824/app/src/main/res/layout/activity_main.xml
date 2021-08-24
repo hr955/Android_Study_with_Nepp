@@ -7,22 +7,33 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <fragment
-        class="com.example.fragment_20210824.fragments.FirstFragment"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:tag="FirstFrag" />
+        android:layout_height="match_parent">
 
-    <fragment
-        class="com.example.fragment_20210824.fragments.SecondFragment"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:tag="SecondFrag" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <fragment
-        class="com.example.fragment_20210824.fragments.FirstFragment"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:tag="FirstFrag" />
-    
+            <fragment
+                class="com.example.fragment_20210824.fragments.FirstFragment"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:tag="FirstFrag" />
+
+            <fragment
+                class="com.example.fragment_20210824.fragments.SecondFragment"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:tag="SecondFrag" />
+
+            <fragment
+                class="com.example.fragment_20210824.fragments.FirstFragment"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:tag="FirstFrag" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

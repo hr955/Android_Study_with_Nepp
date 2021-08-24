@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.librarypractice_20210824.base.BaseActivity
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -49,5 +50,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        Glide.with(mContext).load("https://blog.kakaocdn.net/dn/bQDQNb/btqC3NEbnTz/ErwuxK88uzY9QpgdcnA9mK/img.png").into(recentImg)
     }
 }

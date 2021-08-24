@@ -14,9 +14,10 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/mu_image" />
 
         <TextView

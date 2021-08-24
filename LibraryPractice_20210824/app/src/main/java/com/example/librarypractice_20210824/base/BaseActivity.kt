@@ -1,4 +1,4 @@
-package com.example.librarypractice_20210824
+package com.example.librarypractice_20210824.base
 
 import androidx.appcompat.app.AppCompatActivity
 

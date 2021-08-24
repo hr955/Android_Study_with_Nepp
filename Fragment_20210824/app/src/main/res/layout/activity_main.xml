@@ -7,4 +7,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <fragment
+        android:tag="첫프래그먼트"
+        class="com.example.fragment_20210824.fragments.FirstFragment"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
 </LinearLayout>

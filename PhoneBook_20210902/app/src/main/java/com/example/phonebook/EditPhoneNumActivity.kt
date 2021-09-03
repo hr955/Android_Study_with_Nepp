@@ -88,6 +88,11 @@ class EditPhoneNumActivity : BaseActivity() {
     fun savePhoneNumToFile(content: String) {
         val myFile = File(filesDir, "phoneBook.txt")
 
+        if(!myFile.exists()){
+            // 파일이 없는 경우
+            return
+        }
+
         val fw = FileWriter(myFile, true)
         val bw = BufferedWriter(fw)
 

@@ -66,7 +66,6 @@ class EditPhoneNumActivity : BaseActivity() {
                     // 날짜 선택이 완료되면 -> birthDayTxt 에 반영 (String으로 반영)
                     // Calendar -> String 가공 : SimpleDateFormat
                     // 1980. 07. 30. 양식으로 가공
-
                     val sdf = SimpleDateFormat("yyyy. MM. dd.")
                     birthDayTxt.text = sdf.format(mSelectedDate.time)
                 }

@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
+import java.text.SimpleDateFormat
 
 class MainActivity : BaseActivity() {
 
@@ -29,19 +30,26 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setValues()
         setupEvents()
+        setValues()
 
     }
 
     override fun setValues() {
-        readPhoneBookFromFile()
-
         // 어댑터 초기화
         mAdapter = PhoneNumAdapter(mContext, R.layout.phone_num_list_item, mPhoneNumList)
 
         // 리스트뷰의 어댑터로 연결
         phoneNumListView.adapter = mAdapter
+
+        readPhoneBookFromFile()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // 저장 후 액티비티가 전환될때마다 새로 읽어주자
+        readPhoneBookFromFile()
     }
 
     override fun setupEvents() {
@@ -65,13 +73,31 @@ class MainActivity : BaseActivity() {
         val fr = FileReader(myFile)
         val br = BufferedReader(fr)
 
+        //1980-07-30 String을 분석하는데 쓰일 양식
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+
+        //이 코드는 반복 실행되면 데이터가 누적으로 쌓임
+        //기존에 있던 리스트를 날리고 -> 새로 데이터를 담아주기
+        mPhoneNumList.clear()
+
         while(true){
             val line = br.readLine() ?: break
 
             val infos = line.split(",")
             val phoneNumData = PhoneNumData(infos[0], infos[1])
 
+            // phoneNumData 의 생년월일을, 실제 입력한 생년월일로
+            // "1991-05-09" 로 분리된 String을 기반으로 => phoneNumData의 일자로 저장. =>  (String -> Calendar)
+            // SimpleDateFormat 의 parse 기능 활용
+            phoneNumData.birthDay.time = sdf.parse(infos[2])
+
             mPhoneNumList.add(phoneNumData)
         }
+
+        br.close()
+        fr.close()
+
+        // 내용이 추가됨을 리스트뷰도 인지해야함
+        mAdapter.notifyDataSetChanged()
     }
 }

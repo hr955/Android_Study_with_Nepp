@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.widget.DatePicker
+import android.widget.Toast
 import com.example.phonebook.datas.PhoneNumData
 import kotlinx.android.synthetic.main.activity_edit_phone_num.*
 import java.io.BufferedWriter
@@ -49,6 +50,9 @@ class EditPhoneNumActivity : BaseActivity() {
             // 3. 전화번호를 "이름,전화번호,생년월일" 양식으로 가공 -> 파일에 저장
             Log.d("EditPhoneNumActivityLog", savePhoneNumData.getFileFormatData())
             savePhoneNumToFile(savePhoneNumData.getFileFormatData())
+
+            Toast.makeText(mContext, "전화번호가 추가되었습니다.", Toast.LENGTH_SHORT).show()
+            finish()
         }
 
         selectBirthDayBtn.setOnClickListener {

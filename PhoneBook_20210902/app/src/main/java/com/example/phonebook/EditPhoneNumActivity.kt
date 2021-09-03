@@ -2,10 +2,14 @@ package com.example.phonebook
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.widget.DatePicker
 import com.example.phonebook.datas.PhoneNumData
 import kotlinx.android.synthetic.main.activity_edit_phone_num.*
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,19 +36,19 @@ class EditPhoneNumActivity : BaseActivity() {
             // 1. 입력한 값들을 변수에 저장
             val inputName = nameEdt.text.toString()
             val inputPhoneNum = phoneNumEdt.toString()
-            //생년월일 -> yyyy-MM-dd 형태로 가공
+            // 생년월일 -> yyyy-MM-dd 형태로 가공
             val sdf = SimpleDateFormat("yyyy-MM-dd")
-            //val birthDayStr = sdf.format(mSelectedDate.time) -> PhoneNumData에서 처리
+            // val birthDayStr = sdf.format(mSelectedDate.time) -> PhoneNumData에서 처리
 
             // 2. 전화번호 데이터 객체로 만들기 (클래스 추가)
-            val savePhoneNumData = PhoneNumData(inputName,inputPhoneNum)
+            val savePhoneNumData = PhoneNumData(inputName, inputPhoneNum)
             // PhoneNumData의 생년월일 -> 선택한 날짜에 적힌 년월일 그대로 대입
             // 하나의 Calendar 값 -> 다른 Calendar에 옮겨적기
             savePhoneNumData.birthDay.time = mSelectedDate.time
 
-            Log.d("Testtest", savePhoneNumData.getFileFormatData())
-
             // 3. 전화번호를 "이름,전화번호,생년월일" 양식으로 가공 -> 파일에 저장
+            Log.d("EditPhoneNumActivityLog", savePhoneNumData.getFileFormatData())
+            savePhoneNumToFile(savePhoneNumData.getFileFormatData())
         }
 
         selectBirthDayBtn.setOnClickListener {
@@ -74,6 +78,48 @@ class EditPhoneNumActivity : BaseActivity() {
                     mSelectedDate.get(Calendar.DAY_OF_MONTH)
                 )
             datePickerDialog.show()
+        }
+    }
+
+    // 문장을 넘겨 받아서, 기기의 파일에 기록해주는 기능
+    fun savePhoneNumToFile(content: String) {
+        // (기기 내부의) 파일 경로 설정 -> 해당 경로에 파일 기록
+
+        //SD 카드의 경로 + 파일 저장 폴더 임의 설정(/phonebookData 폴더)
+        val mainFolder = File("${Environment.getExternalStorageDirectory()}/phoneBookData")
+        // 폴더가 실제로 존재하는지 확인
+        var success = true
+        if (!mainFolder.exists()) {
+            // 해당 폴더가 존재하지 않는 경우 -> 폴더 생성
+            // 성공여부 저장
+            success = mainFolder.mkdir()
+        }
+
+        // 폴더가 생성되었다면
+        if (success) {
+            // 파일명만 따로 저장
+            val myFile = File("phoneNumData.txt")
+
+            if (!myFile.exists()) {
+                // 파일이 없다면 -> 생성
+                success = myFile.mkdir()
+            }
+            if (success) {
+                // 경로와 파일이 모두 준비된 상태
+                // 최종 경로 설정
+                val realFilePath = File(mainFolder, myFile.name)
+
+                val fw = FileWriter(realFilePath)
+                val bw = BufferedWriter(fw)
+
+                bw.append(content)
+                bw.newLine()
+
+                bw.close()
+                fw.close()
+
+                Log.d("EditPhoneNumActivityLog", content)
+            }
         }
     }
 }

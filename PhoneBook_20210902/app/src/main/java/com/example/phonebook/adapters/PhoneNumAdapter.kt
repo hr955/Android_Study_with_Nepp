@@ -31,6 +31,15 @@ class PhoneNumAdapter(
         // 이 아래로는 row는 null이 아닌것으로 간주
         val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
         val birthDayTxt = row.findViewById<TextView>(R.id.birthDayTxt)
+        val phoneNumTxt = row.findViewById<TextView>(R.id.phoneNumTxt)
+
+        // 데이터 꺼내와서 연결시키기
+        val data = mList[position]
+
+        nameTxt.text = data.name
+        phoneNumTxt.text = data.phoneNumData
+        // PhoneNumData의 생년월일(Calendar)을 -> n월 n일 양식으로 가공
+        birthDayTxt.text = data.getFormattedBirthday()
 
         return row
     }

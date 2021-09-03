@@ -5,6 +5,9 @@ import android.os.Bundle
 import com.example.phonebook.adapters.PhoneNumAdapter
 import com.example.phonebook.datas.PhoneNumData
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
 
 class MainActivity : BaseActivity() {
 
@@ -32,9 +35,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
-        mPhoneNumList.add(PhoneNumData("테스트", "010-1234-1234"))
-        mPhoneNumList.add(PhoneNumData("테스트1", "010-5678-5678"))
-        mPhoneNumList.add(PhoneNumData("테스트2", "010-2580-2580"))
+        readPhoneBookFromFile()
 
         // 어댑터 초기화
         mAdapter = PhoneNumAdapter(mContext, R.layout.phone_num_list_item, mPhoneNumList)
@@ -54,6 +55,23 @@ class MainActivity : BaseActivity() {
             //EditPhoneNumActivity 로 이동 : Intent
             val myIntent = Intent(mContext, EditPhoneNumActivity::class.java)
             startActivity(myIntent)
+        }
+    }
+
+    // 파일에서 정보를 읽어와서 -> 리스트에 추가
+    fun readPhoneBookFromFile(){
+        val myFile = File(filesDir, "phoneBook.txt")
+
+        val fr = FileReader(myFile)
+        val br = BufferedReader(fr)
+
+        while(true){
+            val line = br.readLine() ?: break
+
+            val infos = line.split(",")
+            val phoneNumData = PhoneNumData(infos[0], infos[1])
+
+            mPhoneNumList.add(phoneNumData)
         }
     }
 }

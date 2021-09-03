@@ -35,7 +35,7 @@ class EditPhoneNumActivity : BaseActivity() {
         okBtn.setOnClickListener {
             // 1. 입력한 값들을 변수에 저장
             val inputName = nameEdt.text.toString()
-            val inputPhoneNum = phoneNumEdt.toString()
+            val inputPhoneNum = phoneNumEdt.text.toString()
             // 생년월일 -> yyyy-MM-dd 형태로 가공
             val sdf = SimpleDateFormat("yyyy-MM-dd")
             // val birthDayStr = sdf.format(mSelectedDate.time) -> PhoneNumData에서 처리
@@ -83,43 +83,17 @@ class EditPhoneNumActivity : BaseActivity() {
 
     // 문장을 넘겨 받아서, 기기의 파일에 기록해주는 기능
     fun savePhoneNumToFile(content: String) {
-        // (기기 내부의) 파일 경로 설정 -> 해당 경로에 파일 기록
+        val myFile = File(filesDir, "phoneBook.txt")
 
-        //SD 카드의 경로 + 파일 저장 폴더 임의 설정(/phonebookData 폴더)
-        val mainFolder = File("${Environment.getExternalStorageDirectory()}/phoneBookData")
-        // 폴더가 실제로 존재하는지 확인
-        var success = true
-        if (!mainFolder.exists()) {
-            // 해당 폴더가 존재하지 않는 경우 -> 폴더 생성
-            // 성공여부 저장
-            success = mainFolder.mkdir()
-        }
+        val fw = FileWriter(myFile, true)
+        val bw = BufferedWriter(fw)
 
-        // 폴더가 생성되었다면
-        if (success) {
-            // 파일명만 따로 저장
-            val myFile = File("phoneNumData.txt")
+        bw.append(content)
+        bw.newLine()
 
-            if (!myFile.exists()) {
-                // 파일이 없다면 -> 생성
-                success = myFile.mkdir()
-            }
-            if (success) {
-                // 경로와 파일이 모두 준비된 상태
-                // 최종 경로 설정
-                val realFilePath = File(mainFolder, myFile.name)
+        bw.close()
+        fw.close()
 
-                val fw = FileWriter(realFilePath)
-                val bw = BufferedWriter(fw)
-
-                bw.append(content)
-                bw.newLine()
-
-                bw.close()
-                fw.close()
-
-                Log.d("EditPhoneNumActivityLog", content)
-            }
-        }
+        Log.d("EditPhoneNumActivityLog", content)
     }
 }

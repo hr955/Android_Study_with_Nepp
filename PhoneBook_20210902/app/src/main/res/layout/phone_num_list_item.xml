@@ -48,14 +48,15 @@
             android:id="@+id/birthDayImg"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@mipmap/ic_launcher" />
+            android:padding="5dp"
+            android:src="@drawable/cake_icon" />
 
         <ImageView
             android:id="@+id/dialImg"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/ic_launcher" />
+            android:padding="10dp"
+            android:src="@drawable/phone_icon" />
 
     </LinearLayout>
 
